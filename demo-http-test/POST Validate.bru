@@ -1,0 +1,22 @@
+meta {
+  name: POST Validate
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://127.0.0.1:8000/validate
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "command": "A0",
+    "message": "Hello world"
+  }
+}
+
+body:xml {
+  <command>A0</command>
+}
