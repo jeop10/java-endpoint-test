@@ -40,7 +40,7 @@ class DemoApplicationTests {
 
 		ValidateRequest testBody = new ValidateRequest();
 		testBody.setCommand("A0");
-		testBody.setKey("1234");
+		testBody.setKey(1234);
 		testBody.setLmk(4);
 		testBody.setEncoding("V");
 		testBody.setOutput("J");
@@ -59,7 +59,7 @@ class DemoApplicationTests {
 
 		ValidateRequest testBody = new ValidateRequest();
 		testBody.setCommand("A0");
-		testBody.setKey("1234");
+		testBody.setKey(1234);
 		testBody.setLmk(4);
 		testBody.setEncoding("V");
 

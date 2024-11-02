@@ -4,6 +4,8 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import org.hibernate.validator.constraints.Range;
 import org.springframework.format.annotation.NumberFormat;
 import org.springframework.validation.annotation.Validated;
 
@@ -13,9 +15,10 @@ public class ValidateRequest {
     @NotBlank
     private String command;
 
-    @NotBlank
-    private String key;
+    @Range(min = 1, max = 1234)
+    private int key;
 
+    @Range(min = 1, max = 4)
     private int lmk;
 
     @NotBlank
@@ -32,19 +35,21 @@ public class ValidateRequest {
         this.command = command;
     }
 
-    public @NotBlank String getKey() {
+    @Range(min = 1, max = 1234)
+    public int getKey() {
         return key;
     }
 
-    public void setKey(@NotBlank String key) {
+    public void setKey(@Range(min = 1, max = 1234) int key) {
         this.key = key;
     }
 
+    @Range(min = 1, max = 4)
     public int getLmk() {
         return lmk;
     }
 
-    public void setLmk(int lmk) {
+    public void setLmk(@Range(min = 1, max = 4) int lmk) {
         this.lmk = lmk;
     }
 
