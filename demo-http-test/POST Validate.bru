@@ -6,17 +6,26 @@ meta {
 
 post {
   url: http://127.0.0.1:8000/validate
-  body: json
+  body: xml
   auth: none
 }
 
 body:json {
   {
     "command": "A0",
-    "message": "Hello world"
+    "key": 1234,
+    "lmk": 1,
+    "encoding": "V",
+    "output": "J"
   }
 }
 
 body:xml {
-  <command>A0</command>
+  <xml>
+    <command>"A0"</command>
+    <key>1234</key>
+    <lmk>1</lmk>
+    <encoding>"V"</encoding>
+    <output>"J"</output>
+  </xml>
 }
