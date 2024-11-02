@@ -2,5 +2,5 @@ rest:
   port: 8000
   # J for JSON, X for XML
   input: "J"
-  # J for JSON, Y for YAML, R for RAW
-  output: "R"
+  # J for JSON, X for XML
+  output: "X"
