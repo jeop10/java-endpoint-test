@@ -7,7 +7,10 @@ This springboot app is a simple REST API that has the following endpoints
 | /get-config | No payload needed | Returns the config loaded by the program  | ``` { "timestamp": "2024-11-01T13:50:12.911+00:00", "status": 500, "error": "Internal Server Error","path": "/get-config"} ``` |
 | /validate   | ```{ "command": "A0", "key": 1234, "lmk": 4, "encoding": "V", "output": "J"}```              | ```{"valid": "true", "message": null }``` | ``` { "timestamp": "2024-11-01T13:50:12.911+00:00", "status": 500, "error": "Internal Server Error","path": "/get-config"}```                 |
 
-The idea is to validate jPOS <-> HSM messages by `POST`ing them to our `/validate` endpoint
+> [!WARNING]
+> **This is just a demo and should not be used in production**
+
+The idea is to validate jPOS <-> HSM messages by `POST`ing them to our `/validate` endpoint. 
 
 To run this app you should have the following:
 - JAVA JDK: 17.0.13-amzn
