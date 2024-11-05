@@ -2,10 +2,10 @@
 
 This springboot app is a simple REST API that has the following endpoints
 
-| Endpoint    | Request Payload  | Response Payload OK                       | Response Payload KO                                                                                                      |
-|-------------|------------------|-------------------------------------------|--------------------------------------------------------------------------------------------------------------------------|
+| Endpoint    | Request Payload  | Response Payload OK                       | Response Payload KO                                                                                                            |
+|-------------|------------------|-------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
 | /get-config | No payload needed | Returns the config loaded by the program  | ``` { "timestamp": "2024-11-01T13:50:12.911+00:00", "status": 500, "error": "Internal Server Error","path": "/get-config"} ``` |
-| /validate   | ```{ "command": "A0", "key": 1234, "lmk": 4, "encoding": "V", "output": "J"}```              | ```{"valid": "true", "message": null }``` | ``` { "timestamp": "2024-11-01T13:50:12.911+00:00", "status": 500, "error": "Internal Server Error","path": "/get-config"}```                 |
+| /validate   | ```{ "command": "A0", "key": 1234, "lmk": 4, "encoding": "V", "output": "J"}```              | ```{"valid": "true", "message": null }``` | ```{"valid": "true", "message": "$Property not valid" }```                                                                     |
 
 > [!WARNING]
 > **This is just a demo and should not be used in production**
@@ -25,7 +25,7 @@ gradle bootRun
 
 ### Configuration
 
-This app offers the ability to be configured using the `config.yaml` which includes
+This app offers the ability to be configured using the `src/main/resources/config.yaml` which includes
 the following properties:
 
 ```yaml
