@@ -34,7 +34,7 @@ public class ValidationController {
             XmlMapper xmlMapper = new XmlMapper();
             String response = null;
             try {
-                response = xmlMapper.writeValueAsString(validateRequest);
+                response = xmlMapper.writeValueAsString(validateRequest.isValid());
             } catch (JsonProcessingException exception) {
                 System.out.println(exception);
             }
@@ -42,7 +42,7 @@ public class ValidationController {
         }
 
         if (responseMediaType == MediaType.APPLICATION_JSON) {
-            return ResponseEntity.ok().contentType(responseMediaType).body(validateRequest);
+            return ResponseEntity.ok().contentType(responseMediaType).body(validateRequest.isValid());
         }
 
         return ResponseEntity.ok().contentType(responseMediaType).body("Test");

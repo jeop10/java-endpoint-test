@@ -3,4 +3,4 @@ rest:
   # J for JSON, X for XML
   input: "J"
   # J for JSON, X for XML
-  output: "X"
+  output: "J"

@@ -72,4 +72,44 @@ class DemoApplicationTests {
 				.andExpect(status().is4xxClientError())
 				.andExpect(content().json("{\"output\": \"must not be blank\"}"));
 	}
+
+	@Test
+	void shouldReturnInvalidResponse() throws Exception {
+
+		ValidateRequest testBody = new ValidateRequest();
+		testBody.setCommand("A1");
+		testBody.setKey(1234);
+		testBody.setLmk(4);
+		testBody.setEncoding("V");
+		testBody.setOutput("J");
+
+		ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+		String jsonBody = ow.writeValueAsString(testBody);
+
+		this.mockMvc.perform(post("/validate")
+						.contentType(MediaType.APPLICATION_JSON)
+						.content(jsonBody))
+				.andExpect(status().is2xxSuccessful())
+				.andExpect(content().json("{\"valid\": \"false\", \"message\": \"Command not valid\"}"));
+	}
+
+	@Test
+	void shouldReturnValidResponse() throws Exception {
+
+		ValidateRequest testBody = new ValidateRequest();
+		testBody.setCommand("A0");
+		testBody.setKey(1234);
+		testBody.setLmk(4);
+		testBody.setEncoding("V");
+		testBody.setOutput("J");
+
+		ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+		String jsonBody = ow.writeValueAsString(testBody);
+
+		this.mockMvc.perform(post("/validate")
+						.contentType(MediaType.APPLICATION_JSON)
+						.content(jsonBody))
+				.andExpect(status().is2xxSuccessful())
+				.andExpect(content().json("{\"valid\": \"true\", \"message\": null}"));
+	}
 }

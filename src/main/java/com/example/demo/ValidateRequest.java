@@ -1,13 +1,11 @@
 package com.example.demo;
 
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import org.hibernate.validator.constraints.Range;
-import org.springframework.format.annotation.NumberFormat;
 import org.springframework.validation.annotation.Validated;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Validated
 public class ValidateRequest {
@@ -68,4 +66,48 @@ public class ValidateRequest {
     public void setOutput(@NotBlank String output) {
         this.output = output;
     }
+
+    public ValidateResponse isValid () {
+        ValidateResponse response = new ValidateResponse();
+
+        System.out.println("Received command is "+ this.command);
+        if (!this.command.equals("A0")) {
+            response.setValid("false");
+            response.setMessage("Command not valid");
+            return response;
+        }
+
+        if (this.key != 1234) {
+            response.setValid("false");
+            response.setMessage("Key not valid");
+            return response;
+        }
+
+        if (this.lmk != 4) {
+            response.setValid("false");
+            response.setMessage("LMK not valid");
+            return response;
+        }
+
+        if (!this.encoding.equals("V")) {
+            response.setValid("false");
+            response.setMessage("Encoding not valid");
+            return response;
+        }
+
+
+        List<String> validOutputs = new ArrayList<>();
+        validOutputs.add("J");
+        validOutputs.add("X");
+
+        if (!validOutputs.contains(this.output)) {
+            response.setValid("false");
+            response.setMessage("Output not valid");
+            return response;
+        }
+
+        response.setValid("true");
+        return response;
+    }
+
 }
