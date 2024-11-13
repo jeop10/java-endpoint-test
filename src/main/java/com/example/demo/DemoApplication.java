@@ -42,7 +42,8 @@ public class DemoApplication {
 					.getResourceAsStream(configFilePath);
 			return yaml.load(inputStream);
 		} catch (Exception e) {
-			throw new RuntimeException("Missing config file: config.yaml");
+			System.out.println(e);
+			throw new RuntimeException("Missing or invalid config file: config.yaml");
 		}
 
 	}

@@ -2,6 +2,7 @@ package com.example.demo;
 
 public class Restconfig {
     private int port;
+    private String apikey;
     private String input;
     private String output;
 
@@ -29,7 +30,11 @@ public class Restconfig {
         this.port = port;
     }
 
-    public String toString() {
-        return "Test string";
+    public String getApikey() {
+        return apikey;
+    }
+
+    public void setApikey(String apikey) {
+        this.apikey = apikey;
     }
 }
