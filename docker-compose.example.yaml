@@ -1,0 +1,5 @@
+services:
+  web:
+    image: jeop10/java-endpoint-test:1.0
+    ports:
+      - "8000:8000"

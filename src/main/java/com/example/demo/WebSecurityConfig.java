@@ -30,6 +30,8 @@ public class WebSecurityConfig {
                         .anyRequest().permitAll()
         );
 
+//        http.csrf(httpSecurityCsrfConfigurer -> httpSecurityCsrfConfigurer.disable());
+
         //since this is an API app, configure it to be stateless
         http.sessionManagement(session ->
                 session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
